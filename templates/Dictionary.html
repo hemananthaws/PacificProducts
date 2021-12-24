@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+
+
+{% block content %}
+<h2>{{ title }}.</h2>
+<h3>{{ message }}</h3>
+
+
+
+<form method="post" action="/Dictionarysearch">
+    <input type="text" name="searchtext">
+    <button onclick="Dictionarysearch()">Search</button>
+    <div>
+        {% if error|length > 1 %}
+        {{error}}
+        {% endif %}
+    </div>
+    <div>
+        {%for md in datas%}
+        <table>
+            <tr>
+                <td> <b>Word :</b>  {{ md.word }}
+                <td>
+            </tr>
+            <tr>
+                <td> <b>Phonetic :</b>  {{ md.phonetic }}
+                <td>
+            </tr>
+            <tr>
+                <td> <b>Origin :</b>  {{ md.origin }}
+                <td>
+            </tr>
+            {%for aud in md.phonetics%}
+            <tr>
+                <td>
+                    <audio controls>
+                        <source src={{aud.audio}} type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+            </tr>
+            {%endfor%}
+            <tr>
+                <td>
+                    <b><u>Meanings:</u></b>
+                </td>
+            </tr>
+            {% set count =  namespace(value = 1) %}
+            {%for i in md.meanings%}
+
+            <tr>
+                <td> <b> {{count.value}}.)  {{ i.partOfSpeech }} </b>
+                <td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="tab2">
+                        <table>
+                            {% set dcount = namespace(value = 1) %}
+                            {%for d in i.definitions%}
+                            <tr>
+                                <td>  <b>{{dcount.value}}.) Definition :</b>  {{ d.definition }}
+                                <td>
+                            </tr>
+                            <tr>
+                                <td> <div class="tab2"> <b>Example :</b>  {{ d.example }} </div>
+                                <td>
+                            </tr>
+                            {% set dcount.value = dcount.value + 1 %}
+                            {%endfor%}
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            {% set count.value = count.value + 1 %}
+            {%endfor%}
+
+        </table>
+        {%endfor%}
+    </div>
+</form>
+
+
+{% endblock %}
