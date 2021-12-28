@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+
+
+{% block content %}
+<h2>{{ title }}.</h2>
+<h3>{{ message }}</h3>
+
+<!-- method="post" action="/pdfgen" -->
+<div>
+    <a href="/PlainTemplate" >PlainTemplate</a>
+    <a href="/pdfgen" >Download PDF</a>
+    <!-- <button onclick="pdfgen()">Download PDF</button> -->
+</div>  
+
+{% endblock %}
