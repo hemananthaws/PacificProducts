@@ -1,0 +1,62 @@
+ 
+{% extends "layout.html" %}
+
+{% block head %}
+<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">-->
+{% endblock %}
+
+
+{% block content %}
+<h2>{{ title }}</h2>
+<h3>All in all <strong>calculation</strong>!</h3>
+ 
+  <div class="container">
+      <h1>Cost per Kilogram</h1>
+      <div class="label">Net Price</div>
+      <div class="control">
+          <input class="input" type="text" placeholder="Enter purchase price">
+      </div>
+      <div class="label">Net Weight in grams</div>
+      <div class="control">
+          <input class="input" type="number" placeholder="Enter Weight in grams">
+      </div>
+      <div class="control">
+        <button class="button is-link is-light">Calculate</button>
+      </div>
+      Display result
+  </div>
+  <hr>
+  <div class="container">
+      <h1>Age Calculator</h1>
+      <div class="label">DOB</div>
+      <div class="control">
+          <input class="input" type="date">
+      </div>
+      <div class="label">As of</div>
+      <div class="control">
+        <input class="input" type="date">
+    </div>
+    <div class="contol">
+        <button class="button">Calculate</button>
+    </div>
+    Display Result
+  </div>
+  <hr>
+<ul>
+    <li>Time (zone) calculation & duration</li>
+    <li>BMI calculation</li>
+    <li>Random Password Generator</li>
+    <li>Mortage calculaion</li>
+    <li>Interest calculation</li>
+    <li>Compound Interest calculation</li>
+    <li>Percentage calculator</li>
+    <li>GST calculation</li>
+    <li>Number of pages in book(based on api)</li>
+    <li>Duration of movie(based on api)</li>
+    <li>Harvesting calculation(Agriculture)</li>
+    <li>Income Tax calculator</li>
+    <li>Food making duration calculator</li>
+</ul>
+
+
+{% endblock %}

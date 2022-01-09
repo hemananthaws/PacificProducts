@@ -99,6 +99,10 @@ def PlainTemplate():
 def plaintemplatepdf(): 
     return resume.plaintemplatepdf()
 
+@app.route("/calculator")
+def calculator():
+    return render_template("calculator.html",title="Calculator")
+
 
 
 
