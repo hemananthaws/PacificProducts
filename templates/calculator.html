@@ -1,36 +1,34 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{title}}</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-  </head>
-  <body style="background-color: #1C1C1C; color: #FFFFFF;">
-  <section class="section">
-    <div class="container">
-      <h1 class="title">
-        Calculator
-      </h1>
-      <p class="subtitle">
-        All in all <strong>calculation</strong>!
-      </p>
-    </div>
-  </section>
+ 
+{% extends "layout.html" %}
+
+{% block head %}
+
+<script src="static\scripts\calculator.js"></script>
+<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">-->
+{% endblock %}
+
+
+{% block content %}
+<h2>{{ title }}</h2>
+<h3>All in all <strong>calculation</strong>!</h3>
+ 
   <div class="container">
       <h1>Cost per Kilogram</h1>
       <div class="label">Net Price</div>
       <div class="control">
-          <input class="input" type="text" placeholder="Enter purchase price">
+          <input class="input clspurchase" type="text" placeholder="Enter purchase price">
       </div>
       <div class="label">Net Weight in grams</div>
       <div class="control">
-          <input class="input" type="number" placeholder="Enter Weight in grams">
+          <input class="input clsweight" type="number" placeholder="Enter Weight in grams">
       </div>
       <div class="control">
-        <button class="button is-link is-light">Calculate</button>
+        <button class="button is-link is-light" onclick="KGCalc()" >Calculate</button>
       </div>
-      Display result
+      <div class="npresult">
+        Display result
+      </div>
+      
   </div>
   <hr>
   <div class="container">
@@ -64,5 +62,6 @@
     <li>Income Tax calculator</li>
     <li>Food making duration calculator</li>
 </ul>
-  </body>
-</html>
+
+
+{% endblock %}
