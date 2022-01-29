@@ -13,10 +13,10 @@ function KGCalc() {
   $("div.npresult").text(kg).removeClass("field-validation-error");
 }
 function bmiCalc() {
-  var height_in_cm = 200; //get value
-  var weight_in_kg = 100; //get value
-  var height_in_m = height_cm / 100; //forumala to convert meter to cm
-  var bmi = weight / (height_in_m * height_in_m); //bmi calculation
+  var height_in_cm = parseInt($(".clsbmiheight").val());; //get value
+  var weight_in_kg = parseInt($(".clsbmiweight").val());; //get value
+  var height_in_m = height_in_cm / 100; //forumala to convert meter to cm
+  var bmi = weight_in_kg / (height_in_m * height_in_m); //bmi calculation
   var category = "";
   if (bmi < 18.4) {
     category = "Under weight";
@@ -31,23 +31,26 @@ function bmiCalc() {
   } else {
     category = "Very Severely Obese";
   }
+  $("div.bmiresult").text(category);
 }
 function passwordgenerator(){
+    var length = 16;
     var pass="";
     var alphaupper="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var alphalower="abcdefghijklmnopqrstuvwxyz";
     var numeric="1234567890";
-    var specialchar="~!@#$%^&*()<>,./?[]{} ";
+    var specialchar="~!@#$%^&*()<>,./?[]{}";
     var salt = crypto.randomUUID();
     var passwordcombination= alphalower + alphaupper + numeric + specialchar + salt;
-    for(i = 1; i <=16;i++){
-        var char = Math.floor(Math.random()*passwordcombination.length + 1);
-        pass += String.charAt(char);
+    for(i = 0 , n = passwordcombination.length;i < length;i++){
+         var char = passwordcombination.charAt(Math.floor(Math.random() * n));
+          pass += char;
     }
-    return pass;
+    $("div.pwdresult").text( "Password :- " +pass ).toString();
+     
 }
 function ageCalc(){
-    var dobinput = document.getElementById("DOB").val();
+    var dobinput = $(".clsdob").val();
     var age = {};
     var dob = new Date(dobinput);
     var now = new Date(); //if possible user selected date as input
@@ -81,29 +84,51 @@ function ageCalc(){
         months: monthagecalc,
         days: dateagecalc
     };
-    return age.years+"years "+age.months+"months "+age.days+"days"
+
+    var agcalcval = "Age = " + age.years+" years "+age.months+" months "+age.days+" days";
+    $("div.ageresult").text(agcalcval);
 }
 function percentage(){
-    var number = 20; //get value
-    var percen = 20; //get value
-    var result = (percen / 100 ) * number + "%";
-    return result
+    var number = $(".clspvalue").val(); //get value
+    var percen = $(".clspp").val(); //get value
+    var result = (percen / 100 ) * number ;
+    $("div.percentageresult").text(percen + " % of " + number + " is = " + result);
+     
 }
 function gstCalc(){
-    var amount = 100; //get value
-    var gstpercentage = 18;
+    var amount = $(".clsgstamt").val(); //get value
+    var gstpercentage = $(".clsgstpercent").val(); 
     var result = ((gstpercentage / 100) * amount);
-    var grossamount = result + amount;
-    return "Net Amount "+amount+" GST amount "+result+" Gross Amount "+grossamount
+    var grossamount = (parseInt(result) + parseInt(amount));
+    var gstvalue = "Net Amount "+amount+" GST amount "+result+" Gross Amount "+grossamount
+    $("div.gstresult").text(gstvalue);
 }
 function mortageCalc(){
-    var principal = 100000; //get value
-    var interest = 6; //get value
-    var year = 30; //get value
-    var monthlypayment_1 = principal * ((interest/100)/12) * (1+((interest/100)/12)^12(year))
-    var monthlypayment_2 = (1+((interest/100)/12))^12(year)-1
-    var monthlypayment = monthlypayment_1 / monthlypayment_2
-    return "Monthly Payment "+monthlypayment
+    var pamt = parseInt($(".clsemiprincipal").val());//get value
+    var rate = parseInt($(".clsemipercent").val()); //get value
+    var year = parseInt($(".clsemiyear").val()); //get value
+   // alert(principal);
+    //var monthlypayment_1 = principal * ((interest/100)/12) * (1+((interest/100)/12)^12(year));
+    //var months = (year * 12);
+    //var monthlypayment_1 =   (principal * (interest * 0.01)) / months;
+    //var monthlypayment_1 =   principal * interest * (((1 + interest) ^ months) / ((( 1 + interest ) ^ months) - 1) )
+
+
+  var month = year * 12;
+  
+  
+   var monthlyInterestRatio = (rate/100)/12;
+   var monthlyInterest = (monthlyInterestRatio*pamt);
+      var top = Math.pow((1+monthlyInterestRatio),month);
+         var bottom = top -1;
+         var sp = top / bottom;
+         var emi = ((pamt * monthlyInterestRatio) * sp);
+   var result = emi.toFixed(2);
+   var totalAmount = emi*month;
+   var yearlyInteret = (totalAmount-pamt).toFixed(2);
+   //var downPayment = pamt*(20/100);
+   var emivalue = "Monthly Payment = "+ result + " , Total Intrest = " + yearlyInteret ;
+   $("div.emiresult").text(emivalue);
 }
 function interestCalc(){
     var principal = 1000; //getvalue
@@ -113,10 +138,12 @@ function interestCalc(){
     return "Interest amount is "+interest;
 }
 function compoundinterestCalc(){
-    var principal = 1000; //getvalue
-    var rateofinterest = 6; //getvalue
-    var tenor = 3; //getvalue
-    var compoundyear = 1; //getvalue
-    var compoundinterest = principal * ((1+(rateofinterest/100)/compoundyear)^(tenor*compoundyear)-1)
-    return "Compound interest is "+compoundinterest
+    var p = parseInt($(".clsciprincipal").val()); //getvalue
+    var r = parseInt($(".clscipercentage").val()); //getvalue
+    var t = parseInt($(".clsciyears").val()); //getvalue
+    
+    //var compoundinterest = principal * ((1+(rateofinterest/100)/compoundyear)^(tenor*compoundyear)-1)
+    var CI = p * (Math.pow((1 + r / 100), t));
+
+    $("div.ciresult").text("Compound interest is "+ CI.toFixed(2));
 }

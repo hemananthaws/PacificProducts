@@ -35,27 +35,129 @@
       <h1>Age Calculator</h1>
       <div class="label">DOB</div>
       <div class="control">
-          <input class="input" type="date">
-      </div>
-      <div class="label">As of</div>
-      <div class="control">
-        <input class="input" type="date">
-    </div>
+          <input class="input clsdob" type="date">
+      </div> 
     <div class="contol">
-        <button class="button">Calculate</button>
+        <button class="button" onclick="ageCalc()">Calculate</button>
     </div>
-    Display Result
+    <div class="ageresult">
+      Display result
+    </div>
   </div>
   <hr>
+  <div class="container">
+    <h1>Random Password Generator</h1>
+  <div class="contol">
+      <button class="button" onclick="passwordgenerator()">Generat</button>
+  </div>
+  <div class="pwdresult">
+    Display result
+  </div>
+</div>
+<hr>
+<div class="container">
+  <h1>Percentage Calculator</h1>
+  <div class="label">Value</div>
+  <div class="control">
+      <input class="input clspvalue" type="number">
+  </div> 
+  <div class="label">Percentage</div>
+  <div class="control">
+      <input class="input clspp" type="number">
+  </div> 
+<div class="contol">
+    <button class="button" onclick="percentage()">Calculate</button>
+</div>
+<div class="percentageresult">
+  Display result
+</div>
+</div>
+<hr>
+<div class="container">
+  <h1>GST Calculator</h1>
+  <div class="label">Amount</div>
+  <div class="control">
+      <input class="input clsgstamt" type="number">
+  </div> 
+  <div class="label">Percentage</div>
+  <div class="control">
+      <input class="input clsgstpercent" value="18" type="number">
+  </div> 
+<div class="contol">
+    <button class="button" onclick="gstCalc()">Calculate</button>
+</div>
+<div class="gstresult">
+  Display result
+</div>
+</div>
+  <hr>
+  <div class="container">
+    <h1>EMI Calculator</h1>
+    <div class="label">Principal</div>
+    <div class="control">
+        <input class="input clsemiprincipal" type="number">
+    </div> 
+    <div class="label">Percentage</div>
+    <div class="control">
+        <input class="input clsemipercent"  type="number">
+    </div> 
+    <div class="label">No. of Years</div>
+    <div class="control">
+        <input class="input clsemiyear"  type="number">
+    </div> 
+  <div class="contol">
+      <button class="button" onclick="mortageCalc()">Calculate</button>
+  </div>
+  <div class="emiresult">
+    Display result
+  </div>
+  </div>
+    <hr>
+    <div class="container">
+      <h1>BMI Calculator</h1>
+      <div class="label">Height</div>
+      <div class="control">
+          <input class="input clsbmiheight" type="number">
+      </div> 
+      <div class="label">Weight</div>
+      <div class="control">
+          <input class="input clsbmiweight"  type="number">
+      </div> 
+       
+    <div class="contol">
+        <button class="button" onclick="bmiCalc()">Calculate</button>
+    </div>
+    <div class="bmiresult">
+      Display result
+    </div>
+    </div>
+      <hr>
+      <div class="container">
+        <h1>Compound Interest calculation</h1>
+        <div class="label">Principal</div>
+        <div class="control">
+            <input class="input clsciprincipal" type="number">
+        </div> 
+        <div class="label">Percentage</div>
+        <div class="control">
+            <input class="input clscipercentage"  type="number">
+        </div> 
+        <div class="label">Years</div>
+        <div class="control">
+            <input class="input clsciyears"  type="number">
+        </div> 
+         
+      <div class="contol">
+          <button class="button" onclick="compoundinterestCalc()">Calculate</button>
+      </div>
+      <div class="ciresult">
+        Display result
+      </div>
+      </div>
+        <hr>
 <ul>
+  <li>UpComming Calculations</li>
     <li>Time (zone) calculation & duration</li>
-    <li>BMI calculation</li>
-    <li>Random Password Generator</li>
-    <li>Mortage calculaion</li>
-    <li>Interest calculation</li>
-    <li>Compound Interest calculation</li>
-    <li>Percentage calculator</li>
-    <li>GST calculation</li>
     <li>Number of pages in book(based on api)</li>
     <li>Duration of movie(based on api)</li>
     <li>Harvesting calculation(Agriculture)</li>
